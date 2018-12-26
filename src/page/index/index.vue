@@ -26,45 +26,21 @@
     </div>
 
     <ul class="goods-bar">
-      <li class="goods-list opacity" ontouchstart="">
-        <div class="goods-img"><img src="http://192.168.100.231/group1/M00/00/03/wKhk51v1D_yAY09SAA9Dyf-GQfc720.jpg"></div>
-        <div class="goods-name"><i>金贝当钱花</i>月见和菓子(芒果味棉花糖麻薯...俘获芳心直用三层夹心嗲方炯</div>
+      <li class="goods-list opacity" ontouchstart="" v-for="item in recommendList" v-bind:key="item.id" @click="goToDetail(item.id)">
+        <div class="goods-img"><img :src="item.image"></div>
+        <div class="goods-name"><i>金贝当钱花</i>{{ item.goodsName }}</div>
         <div class="goods-label">
-          <i class="label-red">6人助力·多得20金贝</i>
-          <i class="label-yellow">送20金贝</i>
+          <!--<i class="label-red">6人助力·多得20金贝</i>-->
+          <i class="label-yellow" v-if="item.backGold">送{{ item.backGold }}金贝</i>
         </div>
         <div class="goods-price">
           <i class="goods-btn-pay">助力购</i>
           <span class="icon-rmb">¥</span>
-          <span class="goods-price-now">18.00</span>
-          <span class="goods-price-old">29.00</span>
+          <span class="goods-price-now">{{ item.price | priceNum }}</span>
+          <!--<span class="goods-price-old">29.00</span>-->
         </div>
       </li>
     </ul>
-
-    <ul>
-      <li><a href="./classify" style="font-size: 0.24rem">商品类目</a></li>
-      <li><a href="./aboutus" style="font-size: 0.36rem">关于我们</a></li>
-      <li><a href="./address" style="font-size: 0.48rem">地址管理</a></li>
-      <li><a href="./addreciver">编辑地址</a></li>
-      <li><a href="./accoutmanage">账号管理</a></li>
-      <li><a href="./bindtel">绑定手机</a></li>
-      <li><a href="./wxauth">微信登录回执页</a></li>
-      <li>--------------------------------------</li>
-      <li class="div-test"><a href="./login">登录页面</a></li>
-      <li>
-        <router-link to="/login">登录页面</router-link><br>
-        <router-link :to="{ name: 'mine_login', params: { id: 9 }}" v-if="1 === 1">登录页面</router-link>
-      </li>
-      <li>--------------------------------------</li>
-      <li><span @click='showToast'>toast提示弹窗</span></li>
-      <li><span @click='showLoading'>显示loading框</span></li>
-      <li><span @click='showLoginBox(1)'>显示登录框</span></li>
-      <li><span @click='aesData'>加密</span></li>
-      <li><span @click='deAesData'>解密</span></li>
-    </ul>
-
-    <div style="background-color: red; width: 7.5rem">123</div>
 
     <v-footer></v-footer>
 
@@ -82,8 +58,9 @@ export default {
   data () {
     return {
       title: '贝划算，开始划算生活',
-      imageList: [], // banner图
-      menuList: [] // 分类图标
+      imageList: [], // banner图列表
+      menuList: [], // 分类图标列表
+      recommendList: [] // 推荐商品列表
     }
   },
   // 注册组件
@@ -91,26 +68,39 @@ export default {
     'v-footer': vFooter
   },
   // 过滤器
-  filters: {},
+  filters: {
+    /**
+     * 数值保留两位小数过滤器
+     * @param data
+     * @returns {string}
+     */
+    priceNum: function (data) {
+      return data.toFixed(2)
+    }
+  },
   // 挂载完成
   mounted () {
     this.$global.changeFootTab(this, 'index')
-    this.$global.setCookie('aesKey', 'rDPrNmQzrXQxBZZ2')
-    this.$global.setCookie('unionId', 'ouA1Y0oLXxWH1b7YeU7BPSSHaB70')
-    this.$global.setCookie('openId', 'ouA1Y0oLXxWH1b7YeU7BPSSHaB70')
-    this.$global.setCookie('sid', '9465a0c0fcfb4fbfb6b2d6af1f2e31de')
-    this.$global.setCookie('uid', '516964814301212672')
-    this.$global.setCookie('session', 'iHNrt0aOLjX5rCIK+eYkVonwuhYgk2jec7GEYFPHvpN8TV76+BC0V5K7M8d7crqm')
-    this.$global.setCookie('session-login', 'd9eb1410f1f744adafa6e8d4b102e271')
+
+    // 150
+    this.$global.setCookie('aesKey', 'Ytc5p2mix2XSxmkC')
+    this.$global.setCookie('unionId', 'oopIu0t5VJ4UYV0VcSwCX1vlGFX8')
+    this.$global.setCookie('openId', 'oFVsQ5a8ygzY1SVOYZh1ZLCf51sY')
+    this.$global.setCookie('sid', 'ca8a95f4f85240f5b18269f65a7d911e')
+    this.$global.setCookie('uid', '524262133245718528')
+    this.$global.setCookie('session', 'ZjG0d6cPXlXJ59E3WpCphaTy48nJezb97jICoj1D4CixRUUgXpSRmCaYqqFXByQQ')
+    this.$global.setCookie('session-login', '0e3ade0e0192435daac16ee800743e3a')
+
     this.$store.state.isLogin = 1
-    this.getData()
+    this.showpageList()
+    this.clientListByCodes()
   },
   // 方法
   methods: {
     /**
-     * 获取首页数据
+     * 获取banner、nav列表
      */
-    getData () {
+    showpageList () {
       this.$global.changeLoading(this, 1)
       let _this = this
       this.$global.myAjax(this, 'post', 'bhs-client-online/showpageConfig/showpageList', '{}', function (res) {
@@ -118,6 +108,27 @@ export default {
           let {imageList, menuList} = res.data.data
           _this.imageList = imageList
           _this.menuList = menuList
+        }
+        _this.$global.changeLoading(_this, 0)
+      }, function (reg) {
+        console.info(reg)
+        _this.$global.changeLoading(_this, 0)
+      })
+    },
+    /**
+     * 获取商品推荐列表
+     */
+    clientListByCodes () {
+      this.$global.changeLoading(this, 1)
+      let _this = this
+      this.$global.myAjax(this, 'post', 'bhs-client-online/showpageContent/clientListByCodes', '{}', function (res) {
+        if (res.data.code * 1 === 1) {
+          let {data} = res.data
+          let {recommendList} = _this
+          for (let i = 0; i < data.length; i++) {
+            recommendList.push(data[i])
+          }
+          _this.recommendList = recommendList
         }
         _this.$global.changeLoading(_this, 0)
       }, function (reg) {
@@ -139,6 +150,14 @@ export default {
     searchJump () {
       this.$router.push({
         path: '/search'
+      })
+    },
+    goToDetail (id) {
+      this.$router.push({
+        path: '/goodsdetail',
+        query: {
+          id
+        }
       })
     },
     showLoading: function () {

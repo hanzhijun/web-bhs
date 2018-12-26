@@ -116,7 +116,16 @@ export default {
     }
   },
   // 过滤器
-  filters: {},
+  filters: {
+    /**
+     * 数值保留两位小数过滤器
+     * @param data
+     * @returns {string}
+     */
+    priceNum: function (data) {
+      return data.toFixed(2)
+    }
+  },
   // 挂载完成
   mounted: function () {
   },

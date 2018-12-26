@@ -20,12 +20,27 @@ export default {
     'v-include': include
   },
   // 过滤器
-  filters: {},
-  // 挂载完成
+  filters: {
+    /**
+     * 数值保留两位小数过滤器
+     * @param data
+     * @returns {string}
+     */
+    priceNum: function (data) {
+      return data.toFixed(2)
+    }
+  },
+  // 挂载完成 created-> mounted-> activated
   created () {
     // this.Tmap()
+    console.log(101 + 'created - start')
+    console.log(this.$store.state.isLogin)
+    console.log(101 + 'created - end')
+    console.log(this.$store.state.isLogin)
   },
   mounted () {
+    console.log(102 + 'mounted - start')
+    console.log(this.$store.state.isLogin)
     let session = this.$global.getCookie('session')
     if (!session) {
       this.$store.state.isLogin = 0
@@ -37,6 +52,21 @@ export default {
     this.$global.htmlResize(this)
     window.addEventListener('resize', this.$global.htmlResize, false)
     this.$global.getLocation(this, this.$global.getAddrName)
+    console.log(102 + 'mounted - end')
+    console.log(this.$store.state.isLogin)
+  },
+  activated () {
+    console.log(103 + 'activated - start')
+    console.log(this.$store.state.isLogin)
+    console.log(103 + 'activated - end')
+    console.log(this.$store.state.isLogin)
+  },
+  deactivated () {
+    console.log(104 + 'deactivated - start')
+    console.log(this.$store.state.isLogin)
+    console.log(104 + 'deactivated - end')
+    console.log(this.$store.state.isLogin)
+    alert('deactivated')
   },
   // 方法
   methods: {

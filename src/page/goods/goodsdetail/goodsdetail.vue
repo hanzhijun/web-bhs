@@ -17,9 +17,9 @@
 
       <div class="detai-info1">
         <span class="icon-rmb fs-40 fc-e6">￥</span>
-        <span class="price-now fc-e6">{{ price / 100 | priceNum(price / 100) }}</span>
-        <span class="price-old fs-24 fc-80 fs-line">{{ price / 100 | priceNum(price / 100) }}</span>
-        <a class="goods-collect fs-22 fc-66" href="javascript:void(0)" ontouchstart=""><i class="clearfix"></i>收藏</a>
+        <span class="price-now fc-e6">{{ missPrice | priceNum }}</span><!-- 用贝价 单价 -->
+        <span class="price-old fs-24 fc-80 fs-line">{{ price / 100 | priceNum }}</span><!-- 商品原价 单价 -->
+        <a class="goods-collect fs-22 fc-66" href="javascript:void(0)" ontouchstart="" @click="toCollect"><i class="clearfix"></i>收藏</a>
         <span class="goods-num fs-24 fc-1a">库存: {{ goodsStock }}</span>
       </div>
 
@@ -27,7 +27,7 @@
         <div class="detai-info2-bj2">
           <!--助力购-->
           <div class="detai-info2-bj3">
-            <span class="gold-num fs-24 fc-fc" v-if="this.$store.state.isLogin === 1">金贝帮您抵扣了{{ Math.min(price / 100, this.$store.state.userCapital.gold / 100) | priceNum(Math.min(price / 100, this.$store.state.userCapital.gold / 100))}}元</span>
+            <span class="gold-num fs-24 fc-fc" v-if="this.$store.state.isLogin === 1">金贝帮您抵扣了{{ priceUseGold | priceNum }}元</span>
             <span class="gold-num fs-24 fc-40" v-else @click="showLoginBox(1)">点击<i class="fs-24 fc-e6">登录</i>获取更多优惠</span>
             <span class="line-ge"></span>
             <span class="help-num fs-24 fc-e6">6人助力·多得209金贝</span>
@@ -40,7 +40,7 @@
       <div class="detai-info2" v-else>
         <div class="detai-info2-bj2">
           <div class="detai-info2-bj3">
-            <span class="gold-num fs-24 fc-fc" v-if="this.$store.state.isLogin === 1">金贝帮您抵扣了{{ Math.min(price / 100, this.$store.state.userCapital.gold / 100) | priceNum(Math.min(price / 100, this.$store.state.userCapital.gold / 100))}}元</span>
+            <span class="gold-num fs-24 fc-fc" v-if="this.$store.state.isLogin === 1">金贝帮您抵扣了{{ priceUseGold | priceNum }}元</span>
             <span class="gold-num fs-24 fc-40" v-else @click="showLoginBox(1)">点击<i class="fs-24 fc-e6">登录</i>获取更多优惠</span>
             <span class="line-ge"></span>
             <span class="help-num fs-24 fc-e6">立即购买送{{ backGold }}金贝</span>
@@ -113,7 +113,7 @@
         <div class="info-bar">
           <div class="info-img"><img :src="skuImgPath"></div>
           <div class="info-mess">
-            <div class="price"><span class="icon-rmb fs-30 fc-e6">￥</span><span class="price-sku fc-e6">138.00</span></div>
+            <div class="price"><span class="icon-rmb fs-30 fc-e6">￥</span><span class="price-sku fc-e6">{{ price / 100 | priceNum }}</span></div>
             <div class="stock fs-24 fc-66">库存: {{ goodsStock }}</div>
             <div class="note-txt fs-24 fc-66">已选: {{ skuData }}</div>
           </div>
@@ -138,8 +138,8 @@
           </ul>
         </div>
         <footer>
-          <a class="fs-28 fc-ff opacity" href="javascript:void(0)" ontouchstart="">加入购物车</a>
-          <a class="go-pay fs-28 fc-ff opacity" href="javascript:void(0)" ontouchstart="">立即购买</a>
+          <a class="fs-28 fc-ff opacity" href="javascript:void(0)" ontouchstart="" @click="joinShopCart()">加入购物车</a>
+          <a class="go-pay fs-28 fc-ff opacity" href="javascript:void(0)" ontouchstart="" @click="toOrder()">立即购买</a>
         </footer>
       </div>
     </div>
@@ -170,11 +170,15 @@ export default {
       skuImgPath: '',
       goodsSkuId: '', // sku唯一id
       price: '', // 售价
+      priceUseGold: null, // 用贝价
+      missPrice: null, // 金贝帮你抵扣了
       quantity: 1, // 商品数量
       goodsStock: '', // 库存数量
-      orderActivityid: 1, //  参加活动的活动类型，参加的活动，1线上，2服务，3代金卷
+      orderActivityId: 1, //  参加活动的活动类型，参加的活动，1线上，2服务，3代金卷
       skuBox: 0, // 是否开启选择sku规格弹窗 0关闭 1打开
-      backGold: 0 // 返金贝数
+      backGold: 0, // 返金贝数
+      isFavorites: 0, // 是否收藏 0未收藏 1已收藏
+      moduleType: 3 // 收藏类型 模块 1 商家 2 套餐 3 商品
     }
   },
   // 过滤器
@@ -185,7 +189,7 @@ export default {
      * @returns {string}
      */
     priceNum: function (data) {
-      return data.toFixed(2)
+      if (data !== null) return data.toFixed(2)
     }
   },
   // 挂载完成
@@ -285,6 +289,12 @@ export default {
       this.goodsSkuId = goodsSkuId
       this.goodsStock = goodsStock
       this.backGold = backGold
+      let isLogin = this.$store.state.isLogin
+      if (isLogin) {
+        let gold = this.$store.state.userCapital.gold
+        this.missPrice = Math.min(price / 100, gold / 100)
+        this.priceUseGold = price / 100 - this.missPrice
+      }
     },
     /**
      * 变更商品规格
@@ -343,9 +353,12 @@ export default {
      * 加入购物车
      */
     joinShopCart () {
+      this.$global.checkLogin(this, location.href, 'joinShopCart')
       let _this = this
       let obj = {
-        goodsSkuId: _this.goodsSkuId
+        goodsSkuId: _this.goodsSkuId,
+        orderActivityId: _this.orderActivityId, // 商品所属活动类型，线上为1，服务为2，代金卷为3
+        quantity: 1 // 购买数量
       }
       this.$global.myAjax2(this, 'post', 'bhs-client-online/shoppingCart', obj, function (res) {
         if (res.data.code * 1 === 1) {
@@ -359,18 +372,37 @@ export default {
      * 立即购买
      */
     toOrder () {
-      let {quantity, goodsSkuId, orderActivityid} = this
+      this.$global.checkLogin(this, location.href, 'toOrder')
+      let {quantity, goodsSkuId, orderActivityId} = this
       let ginfo = []
       let obj = {
         quantity,
         goodsSkuId,
-        orderActivityid,
+        orderActivityId,
         remarks: ''
       }
       ginfo.push(obj)
       this.$global.setStorage('ginfo', this.$global.enCode(JSON.stringify(ginfo)))
       this.$router.push({
         path: '/orderconfirm'
+      })
+    },
+    /**
+     * 收藏
+     */
+    toCollect () {
+      this.$global.checkLogin(this, location.href, 'toCollect')
+      let _this = this
+      let obj = {
+        moduleType: _this.moduleType,
+        favorId: _this.id
+      }
+      this.$global.myAjax2(this, 'post', 'bhs-client-online/ownFavorites', obj, function (res) {
+        if (res.data.code * 1 === 1) {
+          console.info(res.data.data)
+        }
+      }, function (reg) {
+        console.info(reg)
       })
     },
     goToCart () {

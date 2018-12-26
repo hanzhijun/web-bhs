@@ -28,49 +28,48 @@ npm test
 ```
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 
-# 整站使用rem相对长度单位，设计稿以750px为基准，页面元素为其设计稿的 （px值/100）rem
+####  长度单位
+    整站使用rem相对长度单位，设计稿以750px为基准，页面元素为其设计稿的 （px值/100）rem
 
-############################### 公共方法 ####################################
+#### 公共方法 ￥
 
-# ￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥
+    this.$global.myAjax(this, type, url, data, 成功回执, 失败回执)  异步请求数据 一级接口（不需登录）
+    this.$global.myAjax2(this, type, url, data, 成功回执, 失败回执)  异步请求数据 二级接口（需要登录）
+    this.$global.myAjaxLogin(this, type, url, data, 成功回执, 失败回执)  异步请求数据 登录接口触发
 
-# this.$global.myAjax(this, 'post', 'ucenter/wx/appLogin', data, '成功回执', '失败回执')  异步请求数据 一级接口（不需登录）
-# this.$global.myAjax2(this, 'post', 'ucenter/wx/appLogin', data, '成功回执', '失败回执')  异步请求数据 二级接口（需要登录）
-# this.$global.myAjaxLogin(this, 'post', 'ucenter/wx/appLogin', data, '成功回执', '失败回执')  异步请求数据 登录接口触发
+    this.$global.setCookie(text, 1111, time)            设置cookie缓存
+    this.$global.getCookie(text)                        获取cookie缓存
+    this.$global.delCookie(text)                        清除cookie缓存
 
-# this.$global.setCookie('test', 1111)                  设置cookie缓存
-# this.$global.getCookie('test')                        获取cookie缓存
-# this.$global.delCookie('test')                        清除cookie缓存
+    this.$global.setStorage(text, 1111)                 设置local storage缓存
+    this.$global.getStorage(text)                       获取local storage缓存
 
-# this.$global.setStorage('test', 1111)                 设置local storage缓存
-# this.$global.getStorage('test')                       获取local storage缓存
+    this.$global.enCode(text)                             code编码
+    this.$global.unCode(text)                             code解码
 
-# this.$global.enCode(text)                             code编码
-# this.$global.unCode(text)                             code解码
+    this.$global.getAesKey(16)                            生成随机数
+    this.$global.getEncryptKey(this, aesKey)              生成密钥
+    this.$global.getEncryptData(this, '', aesKey)         AES加密数据-微信授权登录
+    this.$global.getSign(this, message, key)              生成签名
 
-# this.$global.getAesKey(16)                            生成随机数
-# this.$global.getEncryptKey(this, aesKey)              生成密钥
-# this.$global.getEncryptData(this, '', aesKey)         AES加密数据-微信授权登录
-# this.$global.getSign(this, message, key)              生成签名
+    this.$global.aesData (word, key)                      AES加密数据
+    this.$global.deAesData (this, word)                   AES解密数据
 
-# this.$global.aesData (word, key)                      AES加密数据
-# this.$global.deAesData (this, word)                   AES解密数据
+    this.$global.getAgent()                               获取当前设备agent
+    this.$global.getUrlString(text)                       获取url中参数值
+    this.$global.changeLoading(this, type)                loading 弹窗控制 type 0隐藏 1显示
+    this.$global.showToast(this, text)                    toast 弱提示弹窗控制 text 提示文案
 
-# this.$global.getAgent()                               获取当前设备agent
-# this.$global.getUrlString(text)                       获取url中参数值
-# this.$global.changeLoading(this, type)                loading 弹窗控制 type 0隐藏 1显示
-# this.$global.showToast(this, text)                    toast 弱提示弹窗控制 text 提示文案
+    this.$global.showLoginbox (this, type)                登录弹窗控制 0 关闭 1 开启
+    this.$global.changeFootTab (this, type)               底部主导航控制 index nearby cart mine
 
-# this.$global.showLoginbox (this, type)                登录弹窗控制 0 关闭 1 开启
-# this.$global.changeFootTab (this, type)               底部主导航控制 index nearby cart mine
+    npm install vue-wechat-title --save  设置页面标题
 
-# npm install vue-wechat-title --save  设置页面标题
+    vue中后退操作如何刷新页面
+    开启keep-alive的时候，页面第一次进入，钩子的触发顺序created-> mounted-> activated，退出时触发deactivated。
+    当再次进入（前进或者后退）时，只触发activated。把列表页获取数据的接口请求由放在mounted里改为放在activated即可。
 
-# vue中后退操作如何刷新页面
-# 开启keep-alive的时候，页面第一次进入，钩子的触发顺序created-> mounted-> activated，退出时触发deactivated。当再次进入（前进或者后退）时，只触发activated。把列表页获取数据的接口请求由放在mounted里改为放在activated即可。
-
-################################### 常用规范 ###################################
-################### 提交代码前，务必使用useEslint检测全部通过 ##################
+    获取当前页url  window.location.href,  location.href
 
 ###### 命名规则
     ### （文件名）

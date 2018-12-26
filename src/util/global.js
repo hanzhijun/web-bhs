@@ -1,5 +1,6 @@
 import Utils from '@/util/util.js'
 export const global = {
+  vision: '3.0.0', // 更新于2018.12.20
   host: 'http://192.168.100.84:9999',
   // host: '',
   imgUrl: 'https://img.duishangbao.cn/upload/image/',
@@ -26,7 +27,7 @@ export const global = {
    * 添加cookie设置
    * @param name
    * @param value
-   * @param expiredays
+   * @param expiredays 秒
    */
   setCookie (name, value, expiredays) {
     var exdate = new Date()
@@ -117,6 +118,7 @@ export const global = {
       method: type,
       // url: 'http://192.168.100.122:8088/' + url,
       url: 'http://39.108.96.150:8088/' + url,
+      // url: 'http://bhsapi.duishangbao.cn/' + url,
       data,
       headers
     }).then(function (response) {
@@ -180,7 +182,7 @@ export const global = {
       'B-User-Agent': '1000/1.0;android/6.2;mi/YA77;cn;10003',
       'X-Client-Id': '8888',
       'B-Replay': 'nonce=' + nonce + '&timespan=' + Date.parse(new Date()) + '&sig=' + sign,
-      'B-Author': 'app=1000&sid=' + sid + '&nonce=' + nonce + '&timespan=' + Date.parse(new Date()) + '&device=16&uid=' + uid + '& sig=' + sign,
+      'B-Author': 'app=1000&sid=' + sid + '&nonce=' + nonce + '&timespan=' + Date.parse(new Date()) + '&device=16&uid=' + uid + '&sig=' + sign,
       'sig': sign
     }
     return that.$ajax({
@@ -378,7 +380,7 @@ RTsYOVZjZ+MqaGWlRwIDAQAB
    * 新版跳转页面设置
    * @jumpType 跳转类型 1.不跳转 2.h5 3.商品 4.区域 5.商品分类
    */
-  openPageTo: function (that, jumpParam, jumpType) {
+  openPageTo (that, jumpParam, jumpType) {
     if (jumpType === 2) {
       window.location.href = jumpParam
     } else if (jumpType === 3) {
@@ -398,5 +400,42 @@ RTsYOVZjZ+MqaGWlRwIDAQAB
     } else {
       console.log('暂不支持此类型跳转')
     }
+  },
+  /**
+   * 是否登录检验
+   * @param that 作用域 this
+   * @param url 登录成功 返回url
+   * @param callback 登录成功 自动执行事件
+   * @returns {boolean}
+   */
+  checkLogin (that, url, callback) {
+    let isLogin = that.$store.state.isLogin
+    if (!isLogin) {
+      that.$global.setCookie('W_U_L_B_U', url, 20)
+      that.$global.setCookie('W_U_F_U_N', callback, 20)
+      that.$router.push({
+        path: '/login'
+      })
+    }
+  },
+  /**
+   * 新增搜索词条的缓存处理
+   * @param word
+   */
+  addSearchWord (that, word) {
+    let arr = []
+    if (that.$global.getCookie('searchWord')) {
+      arr = JSON.parse(that.$global.getCookie('searchWord'))
+    }
+    if (arr && arr.indexOf(word) !== -1) {
+      let index = arr.indexOf(word)
+      arr.splice(index, 1)
+      console.info(arr)
+    }
+    arr.unshift(word)
+    if (arr.length > 10) {
+      arr.length = 10
+    }
+    that.$global.setCookie('searchWord', JSON.stringify(arr))
   }
 }

@@ -13,9 +13,9 @@
       <!--商品列表-->
       <div class="cart-list" v-for="item in goodsList" v-bind:key="item.id">
         <i class="check-single" :class="{'this-over':item.isSelect * 1 === 1}" @click="checkSingle(item.goodsSkuId)"></i>
-        <div class="cart-img"><img class='image' :src="item.goodsImage"></div>
+        <div class="cart-img"><img class='image' :src="item.goodsImage" @click="goToDetail(item.goodsId)"></div>
         <div class="cart-mess-bar">
-          <div class="name text-overflow-2">{{ item.goodsName }}</div>
+          <div class="name text-overflow-2" @click="goToDetail(item.goodsId)">{{ item.goodsName }}</div>
           <span class="spec">{{ item.goodsSpec }}</span>
           <span class="return">送68金贝</span>
           <div class="price">¥ {{ item.goodsPrice.cash / 100 | priceNum(item.goodsPrice.cash / 100) }}</div>
@@ -340,6 +340,14 @@ export default {
       this.$global.setStorage('ginfo', this.$global.enCode(JSON.stringify(ginfo)))
       this.$router.push({
         path: '/orderconfirm'
+      })
+    },
+    goToDetail (id) {
+      this.$router.push({
+        path: '/goodsdetail',
+        query: {
+          id
+        }
       })
     }
   }

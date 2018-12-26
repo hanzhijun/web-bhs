@@ -37,7 +37,7 @@
           </div>
         </div>
       </li>
-      <li class="opacity">
+     <!-- <li class="opacity">
         <div class="border-line-heng-e6e6e6"></div>
         <div class="img"><img src="https://img.duishangbao.cn/upload/goods/imgs/32/18a65547982d717dc220fb133e1d8bcf.jpeg"></div>
         <div class="main">
@@ -50,105 +50,7 @@
             <span class="tuan text-overflow">战斧牛排hah.. 团购1~2人</span>
           </div>
         </div>
-      </li>
-      <li class="opacity">
-        <div class="border-line-heng-e6e6e6"></div>
-        <div class="img"><img src="https://img.duishangbao.cn/upload/goods/imgs/32/18a65547982d717dc220fb133e1d8bcf.jpeg"></div>
-        <div class="main">
-          <span class="name fs-30 fc-1a text-overflow">北京遇上烤..(府城国际)</span>
-          <span class="addr fs-24 fc-1a text-overflow">高新区 吉泰路 0.8km</span>
-          <span class="price fs-24 fc-66">人均消费:￥88.88</span>
-
-          <div class="label fs-24 fc-66">
-            <span class="di">金贝消费</span>
-            <span class="tuan text-overflow">战斧牛排hah.. 团购1~2人</span>
-          </div>
-        </div>
-      </li>
-      <li class="opacity">
-        <div class="border-line-heng-e6e6e6"></div>
-        <div class="img"><img src="https://img.duishangbao.cn/upload/goods/imgs/32/18a65547982d717dc220fb133e1d8bcf.jpeg"></div>
-        <div class="main">
-          <span class="name fs-30 fc-1a text-overflow">北京遇上烤..(府城国际)</span>
-          <span class="addr fs-24 fc-1a text-overflow">高新区 吉泰路 0.8km</span>
-          <span class="price fs-24 fc-66">人均消费:￥88.88</span>
-
-          <div class="label fs-24 fc-66">
-            <span class="di">金贝消费</span>
-            <span class="tuan text-overflow">战斧牛排hah.. 团购1~2人</span>
-          </div>
-        </div>
-      </li>
-      <li class="opacity">
-        <div class="border-line-heng-e6e6e6"></div>
-        <div class="img"><img src="https://img.duishangbao.cn/upload/goods/imgs/32/18a65547982d717dc220fb133e1d8bcf.jpeg"></div>
-        <div class="main">
-          <span class="name fs-30 fc-1a text-overflow">北京遇上烤..(府城国际)</span>
-          <span class="addr fs-24 fc-1a text-overflow">高新区 吉泰路 0.8km</span>
-          <span class="price fs-24 fc-66">人均消费:￥88.88</span>
-
-          <div class="label fs-24 fc-66">
-            <span class="di">金贝消费</span>
-            <span class="tuan text-overflow">战斧牛排hah.. 团购1~2人</span>
-          </div>
-        </div>
-      </li>
-      <li class="opacity">
-        <div class="border-line-heng-e6e6e6"></div>
-        <div class="img"><img src="https://img.duishangbao.cn/upload/goods/imgs/32/18a65547982d717dc220fb133e1d8bcf.jpeg"></div>
-        <div class="main">
-          <span class="name fs-30 fc-1a text-overflow">北京遇上烤..(府城国际)</span>
-          <span class="addr fs-24 fc-1a text-overflow">高新区 吉泰路 0.8km</span>
-          <span class="price fs-24 fc-66">人均消费:￥88.88</span>
-
-          <div class="label fs-24 fc-66">
-            <span class="di">金贝消费</span>
-            <span class="tuan text-overflow">战斧牛排hah.. 团购1~2人</span>
-          </div>
-        </div>
-      </li>
-      <li class="opacity">
-        <div class="border-line-heng-e6e6e6"></div>
-        <div class="img"><img src="https://img.duishangbao.cn/upload/goods/imgs/32/18a65547982d717dc220fb133e1d8bcf.jpeg"></div>
-        <div class="main">
-          <span class="name fs-30 fc-1a text-overflow">北京遇上烤..(府城国际)</span>
-          <span class="addr fs-24 fc-1a text-overflow">高新区 吉泰路 0.8km</span>
-          <span class="price fs-24 fc-66">人均消费:￥88.88</span>
-
-          <div class="label fs-24 fc-66">
-            <span class="di">金贝消费</span>
-            <span class="tuan text-overflow">战斧牛排hah.. 团购1~2人</span>
-          </div>
-        </div>
-      </li>
-      <li class="opacity">
-        <div class="border-line-heng-e6e6e6"></div>
-        <div class="img"><img src="https://img.duishangbao.cn/upload/goods/imgs/32/18a65547982d717dc220fb133e1d8bcf.jpeg"></div>
-        <div class="main">
-          <span class="name fs-30 fc-1a text-overflow">北京遇上烤..(府城国际)</span>
-          <span class="addr fs-24 fc-1a text-overflow">高新区 吉泰路 0.8km</span>
-          <span class="price fs-24 fc-66">人均消费:￥88.88</span>
-
-          <div class="label fs-24 fc-66">
-            <span class="di">金贝消费</span>
-            <span class="tuan text-overflow">战斧牛排hah.. 团购1~2人</span>
-          </div>
-        </div>
-      </li>
-      <li class="opacity">
-        <div class="border-line-heng-e6e6e6"></div>
-        <div class="img"><img src="https://img.duishangbao.cn/upload/goods/imgs/32/18a65547982d717dc220fb133e1d8bcf.jpeg"></div>
-        <div class="main">
-          <span class="name fs-30 fc-1a text-overflow">北京遇上烤..(府城国际)</span>
-          <span class="addr fs-24 fc-1a text-overflow">高新区 吉泰路 0.8km</span>
-          <span class="price fs-24 fc-66">人均消费:￥88.88</span>
-
-          <div class="label fs-24 fc-66">
-            <span class="di">金贝消费</span>
-            <span class="tuan text-overflow">战斧牛排hah.. 团购1~2人</span>
-          </div>
-        </div>
-      </li>
+      </li> -->
     </ul>
 
     <v-footer></v-footer>
@@ -235,21 +137,37 @@ export default {
     'v-footer': vFooter
   },
   // 过滤器
-  filters: {},
+  filters: {
+    /**
+     * 数值保留两位小数过滤器
+     * @param data
+     * @returns {string}
+     */
+    priceNum: function (data) {
+      return data.toFixed(2)
+    }
+  },
   // 挂载完成
   mounted () {
     this.$global.changeFootTab(this, 'nearby')
-    /* let _this = this
     this.$global.changeLoading(this, 1)
+    let _this = this
     this.$global.myAjax(this, 'get', 'bhs-client-online/business/offline/near?latitude=' + this.$store.state.latitude + '&longitude=' + this.$store.state.longitude, '{}', function (res) {
       if (res.data.code * 1 === 1) {
         console.info(res.data.data)
       }
       _this.$global.changeLoading(_this, 0)
-    }) */
+    })
   },
   // 方法
-  methods: {}
+  methods: {
+    /**
+     * 返回上一页
+     */
+    goBack () {
+      this.$global.goBack(this)
+    }
+  }
 }
 Vue.component(Swipe.name, Swipe)
 Vue.component(SwipeItem.name, SwipeItem)

@@ -5,7 +5,7 @@
       <div class="gray-back"></div>
       <div class="box-content">
         <div class="img">
-          <img src="https://img.duishangbao.cn/upload/index/loading2.gif">
+          <img src="https://api.duishangbao.cn/upload/image/loading.gif">
         </div>
         <div class="txt">加载中...</div>
       </div>
@@ -38,7 +38,16 @@ export default {
     return {}
   },
   // 过滤器
-  filters: {},
+  filters: {
+    /**
+     * 数值保留两位小数过滤器
+     * @param data
+     * @returns {string}
+     */
+    priceNum: function (data) {
+      return data.toFixed(2)
+    }
+  },
   // 挂载完成
   mounted: function () {},
   // 方法
@@ -66,6 +75,7 @@ export default {
           _this.hideLoginBox(0)
           let url = res.data.data
           _this.$global.setCookie('W_U_L_B_U', window.location.href)
+          console.log(url)
           window.location.href = url
         } else {
           console.info(res)

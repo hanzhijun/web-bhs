@@ -8,15 +8,15 @@
 
     <div class="confirm-header-null"></div>
 
-    <div class="order-address" v-if="addrId !== null">
-      <div class="order-addr-mess" v-if="addrId !== ''" @click="goToAddress('change')">
+    <div class="order-address">
+      <div class="order-addr-mess" v-if="addrId" @click="goToAddress('change')">
         <span class="name fs-bold">收货人：{{ addrUserName }}</span>
         <span class="tel fs-bold">{{ addrUserTel }}</span>
         <p class="addr-main">{{ addrUserRess }}</p>
         <i class="icon-star"></i>
       </div>
 
-      <div class="order-addr-mess" v-if="addrId === ''" @click="goToAddress('add')">
+      <div class="order-addr-mess" v-else @click="goToAddress('add')">
         <span class="add-new-btn fs-32 fc-1a">新增收货地址</span>
         <i class="icon-star"></i>
       </div>
@@ -122,7 +122,18 @@ export default {
         _this.goHome()
       }, 3000)
     }
-    this.ginfo = JSON.parse(this.$global.unCode(ginfo))
+    let data = JSON.parse(this.$global.unCode(ginfo))
+    let newGinfo = []
+    for (let i = 0; i < data.length; i++) {
+      let obj = {
+        goodsSkuId: data[i].goodsSkuId,
+        orderActivityId: data[i].orderActivityId,
+        quantity: data[i].quantity,
+        remarks: ''
+      }
+      newGinfo.push(obj)
+    }
+    this.ginfo = newGinfo
     this.getData()
   },
   // 方法
@@ -196,6 +207,9 @@ export default {
      */
     createOrder: function () {
       let {goodsList, addrId, useGold} = this
+      if (!addrId) {
+        this.$global.showToast(this, '请选择收货地址')
+      }
       let list = []
       for (let i = 0; i < goodsList.length; i++) {
         let v = {
@@ -265,8 +279,17 @@ export default {
       this.useGoldNum = useGoldNum
       this.payNum = cash - useGoldNum + freight
     },
+    /**
+     * 新增或更换收货地址
+     * @param type change add
+     */
     goToAddress (type) {
-
+      this.$router.push({
+        path: '/address',
+        query: {
+          type
+        }
+      })
     }
   }
 }

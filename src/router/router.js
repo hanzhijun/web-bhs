@@ -1,37 +1,39 @@
 
 import App from '../App'
 
-const HomeIndexView = r => require.ensure([], () => r(require('../page/index/index')), 'HomeIndexView')
-const wxAuth = r => require.ensure([], () => r(require('../page/wxauth/wxauth')), 'wxAuth')
-const nearByView = r => require.ensure([], () => r(require('../page/nearby/nearby')), 'nearByView')
-const shopCartView = r => require.ensure([], () => r(require('../page/cart/cart')), 'shopCartView')
+const HomeIndexView = r => require.ensure([], () => r(require('../page/index/index')), 'HomeIndexView') // 首页
+const wxAuth = r => require.ensure([], () => r(require('../page/wxauth/wxauth')), 'wxAuth') // 微信授权登录回执页面
+const nearByView = r => require.ensure([], () => r(require('../page/nearby/nearby')), 'nearByView') // 附近
+const shopCartView = r => require.ensure([], () => r(require('../page/cart/cart')), 'shopCartView') // 购物车
 
-const mineView = r => require.ensure([], () => r(require('../page/mine/mine/mine')), 'mineView')
-const loginView = r => require.ensure([], () => r(require('../page/mine/login/login')), 'loginView')
-const aboutUsView = r => require.ensure([], () => r(require('../page/mine/aboutus/aboutus')), 'aboutUsView')
-const addressView = r => require.ensure([], () => r(require('../page/mine/address/address')), 'addressView')
-const addreciverView = r => require.ensure([], () => r(require('../page/mine/addreciver/addreciver')), 'addreciverView')
-const accoutManage = r => require.ensure([], () => r(require('../page/mine/accoutmanage/accoutmanage')), 'accoutManage')
-const bindTel = r => require.ensure([], () => r(require('../page/mine/bindtel/bindtel')), 'bindTel')
-const updateTel = r => require.ensure([], () => r(require('../page/mine/updatetel/updatetel')), 'updateTel')
-const afterSaleList = r => require.ensure([], () => r(require('../page/mine/aftersalelist/aftersalelist')), 'afterSaleList')
-const afterSaleApply = r => require.ensure([], () => r(require('../page/mine/aftersaleapply/aftersaleapply')), 'afterSaleApply')
-const afterSaleDetail = r => require.ensure([], () => r(require('../page/mine/aftersaledetail/aftersaledetail')), 'afterSaleDetail')
+const mineView = r => require.ensure([], () => r(require('../page/mine/mine/mine')), 'mineView') // 我的
+const loginView = r => require.ensure([], () => r(require('../page/mine/login/login')), 'loginView') // 登录页（预留页面）
+const aboutUsView = r => require.ensure([], () => r(require('../page/mine/aboutus/aboutus')), 'aboutUsView') // 关于我们
+const addressView = r => require.ensure([], () => r(require('../page/mine/address/address')), 'addressView') // 收货地址
+const addreciverView = r => require.ensure([], () => r(require('../page/mine/addreciver/addreciver')), 'addreciverView') // 新增/编辑地址
+const accoutManage = r => require.ensure([], () => r(require('../page/mine/accoutmanage/accoutmanage')), 'accoutManage') // 账户管理
+const bindTel = r => require.ensure([], () => r(require('../page/mine/bindtel/bindtel')), 'bindTel') // 绑定手机
+const updateTel = r => require.ensure([], () => r(require('../page/mine/updatetel/updatetel')), 'updateTel') // 更新手机
+const afterSaleList = r => require.ensure([], () => r(require('../page/mine/aftersalelist/aftersalelist')), 'afterSaleList') // 售后服务
+const afterSaleApply = r => require.ensure([], () => r(require('../page/mine/aftersaleapply/aftersaleapply')), 'afterSaleApply') // 售后申请
+const afterSaleDetail = r => require.ensure([], () => r(require('../page/mine/aftersaledetail/aftersaledetail')), 'afterSaleDetail') // 售后详情
 
-const classifyView = r => require.ensure([], () => r(require('../page/goods/classify/classify')), 'classifyView')
-const searchView = r => require.ensure([], () => r(require('../page/goods/search/search')), 'searchView')
-const goodsListView = r => require.ensure([], () => r(require('../page/goods/goodslist/goodslist')), 'goodsListView')
-const goodsDetailView = r => require.ensure([], () => r(require('../page/goods/goodsdetail/goodsdetail')), 'goodsDetailView')
-const goodsOrderConfirm = r => require.ensure([], () => r(require('../page/goods/orderconfirm/orderconfirm')), 'goodsOrderConfirm')
-const orderList = r => require.ensure([], () => r(require('../page/goods/orderlist/orderlist')), 'orderList')
-const orderDetail = r => require.ensure([], () => r(require('../page/goods/orderdetail/orderdetail')), 'orderDetail')
+const classifyView = r => require.ensure([], () => r(require('../page/goods/classify/classify')), 'classifyView') // 商品分类
+const searchView = r => require.ensure([], () => r(require('../page/goods/search/search')), 'searchView') // 商品搜索
+const goodsListView = r => require.ensure([], () => r(require('../page/goods/goodslist/goodslist')), 'goodsListView') // 商品列表
+const goodsDetailView = r => require.ensure([], () => r(require('../page/goods/goodsdetail/goodsdetail')), 'goodsDetailView') // 商品详情
+const goodsOrderConfirm = r => require.ensure([], () => r(require('../page/goods/orderconfirm/orderconfirm')), 'goodsOrderConfirm') // 订单确认
+const orderList = r => require.ensure([], () => r(require('../page/goods/orderlist/orderlist')), 'orderList') // 我的订单
+const orderDetail = r => require.ensure([], () => r(require('../page/goods/orderdetail/orderdetail')), 'orderDetail') // 订单详情
 
-const businessList = r => require.ensure([], () => r(require('../page/business/businesslist/businesslist')), 'businessList')
-const businessHome = r => require.ensure([], () => r(require('../page/business/businesshome/businesshome')), 'businessHome')
-const packageList = r => require.ensure([], () => r(require('../page/business/packagelist/packagelist')), 'packageList')
-const packageDetail = r => require.ensure([], () => r(require('../page/business/packagedetail/packagedetail')), 'packageDetail')
-const packageOrderConfirm = r => require.ensure([], () => r(require('../page/business/packageorderconfirm/packageorderconfirm')), 'packageOrderConfirm')
-const packageOrderDetail = r => require.ensure([], () => r(require('../page/business/packageorderdetail/packageorderdetail')), 'packageOrderDetail')
+const businessList = r => require.ensure([], () => r(require('../page/business/businesslist/businesslist')), 'businessList') // 商家列表
+const businessHome = r => require.ensure([], () => r(require('../page/business/businesshome/businesshome')), 'businessHome') // 商家详情
+const packageList = r => require.ensure([], () => r(require('../page/business/packagelist/packagelist')), 'packageList') // 套餐列表
+const packageDetail = r => require.ensure([], () => r(require('../page/business/packagedetail/packagedetail')), 'packageDetail') // 套餐/代金券详情
+const packageOrderConfirm = r => require.ensure([], () => r(require('../page/business/packageorderconfirm/packageorderconfirm')), 'packageOrderConfirm') // 套餐/代金券订单确认
+const packageOrderDetail = r => require.ensure([], () => r(require('../page/business/packageorderdetail/packageorderdetail')), 'packageOrderDetail') // 套餐/代金券订单详情
+
+const myUrl = r => require.ensure([], () => r(require('../page/url/url')), 'myUrl')
 
 export default [{
   path: '/',
@@ -42,6 +44,16 @@ export default [{
       path: '',
       redirect: '/index',
       sort: 0
+    },
+    // url
+    {
+      path: '/url',
+      component: myUrl,
+      meta: {
+        title: 'URL'
+      },
+      name: '',
+      sort: -1
     },
     // 首页
     {

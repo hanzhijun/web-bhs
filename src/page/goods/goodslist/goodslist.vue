@@ -52,7 +52,16 @@ export default {
     }
   },
   // 过滤器
-  filters: {},
+  filters: {
+    /**
+     * 数值保留两位小数过滤器
+     * @param data
+     * @returns {string}
+     */
+    priceNum: function (data) {
+      return data.toFixed(2)
+    }
+  },
   // 挂载完成
   mounted: function () {
     let sid = this.$global.getUrlString('sid')
@@ -152,12 +161,9 @@ export default {
       if (this.word === '') {
         this.$global.showToast(this, '请输入搜索的商品关键字')
       } else {
-        this.$router.push({
-          path: '/goodslist',
-          query: {
-            word: this.$global.enCode(this.word)
-          }
-        })
+        this.$global.addSearchWord(this, this.word)
+        this.list = []
+        this.getData()
       }
     }
   }

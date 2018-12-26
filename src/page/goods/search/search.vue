@@ -18,8 +18,8 @@
 
     <ul class="search-history-list" v-if="searchLong > 0">
       <li v-for="item in searchList" v-bind:key="item.id">
-        <span @click="toSearch(item.text)">{{ item.text }}</span>
-        <a class="opacity" href="javascript:void(0)" ontouchstart="" @click="delSearch(item.id)"></a>
+        <span @click="toSearch(item)">{{ item }}</span>
+        <a class="opacity" href="javascript:void(0)" ontouchstart="" @click="delSearch(item)"></a>
       </li>
     </ul>
 
@@ -36,22 +36,28 @@ export default {
       title: '商品搜索',
       word: '', // 搜索关键字
       searchLong: -1, // 搜索记录条数
-      searchList: [{
-        id: 123,
-        text: '哈根达斯'
-      }, {
-        id: 124,
-        text: '圆圆美梦成真'
-      }, {
-        id: 125,
-        text: '遍历在加'
-      }]
+      searchList: []
     }
   },
   // 过滤器
-  filters: {},
+  filters: {
+    /**
+     * 数值保留两位小数过滤器
+     * @param data
+     * @returns {string}
+     */
+    priceNum: function (data) {
+      return data.toFixed(2)
+    }
+  },
   // 挂载完成
   mounted: function () {
+    if (!this.$global.getCookie('searchWord')) return
+    let searchList = JSON.parse(this.$global.getCookie('searchWord'))
+    this.searchList = []
+    for (let i = 0; i < searchList.length; i++) {
+      this.searchList.push(this.$global.unCode(searchList[i]))
+    }
     this.searchLong = this.searchList.length
   },
   // 方法
@@ -86,6 +92,7 @@ export default {
         if (this.word === '') {
           this.$global.showToast(this, '请输入搜索的商品关键字')
         } else {
+          this.$global.addSearchWord(this, this.word)
           this.$router.push({
             path: '/goodslist',
             query: {
@@ -94,6 +101,7 @@ export default {
           })
         }
       } else {
+        this.$global.addSearchWord(this, word)
         this.$router.push({
           path: '/goodslist',
           query: {
@@ -102,21 +110,21 @@ export default {
         })
       }
     },
-    delSearch (id) {
-      if (!id) {
-        console.log('搜索历史全部删除成功')
+    delSearch (word) {
+      if (!word) {
         this.searchList = []
+        this.$global.setCookie('searchWord', '')
         this.checkSearch()
       } else {
-        console.log('搜索单条记录')
-        let searchList = JSON.parse(JSON.stringify(this.searchList))
+        let searchList = this.searchList
         let newData = []
         for (let i = 0; i < searchList.length; i++) {
-          if (searchList[i].id !== id) {
+          if (searchList[i] !== word) {
             newData.push(searchList[i])
           }
         }
         this.searchList = newData
+        this.$global.setCookie('searchWord', JSON.stringify(newData))
         this.checkSearch()
       }
     }
