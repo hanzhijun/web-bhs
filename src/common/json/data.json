@@ -1,0 +1,83 @@
+{
+  "classify": [
+    {
+      "cid": 3,
+      "c_name": "美妆",
+      "parent_id": 0,
+      "level": 1,
+      "logo": "upload/goods/category_logo/",
+      "data": ""
+    }, {
+      "cid": 4,
+      "c_name": "家电",
+      "parent_id": 0,
+      "level": 1,
+      "logo": "upload/goods/category_logo/",
+      "data": ""
+    },
+    {
+      "cid": 7,
+      "c_name": "箱包",
+      "parent_id": 0,
+      "level": 1,
+      "logo": "upload/goods/category_logo/",
+      "data": ""
+    },
+    {
+      "cid": 10,
+      "c_name": "鞋类",
+      "parent_id": 0,
+      "level": 1,
+      "logo": "upload/goods/category_logo/",
+      "data": ""
+    },
+    {
+      "cid": 14,
+      "c_name": "手机数码",
+      "parent_id": 0,
+      "level": 1,
+      "logo": "upload/goods/category_logo/",
+      "data": ""
+    },
+    {
+      "cid": 15,
+      "c_name": "户外运动",
+      "parent_id": 0,
+      "level": 1,
+      "logo": "upload/goods/category_logo/",
+      "data": ""
+    },
+    {
+      "cid": 16,
+      "c_name": "珠宝",
+      "parent_id": 0,
+      "level": 1,
+      "logo": "upload/goods/category_logo/",
+      "data": ""
+    },
+    {
+      "cid": 17,
+      "c_name": "酒类",
+      "parent_id": 0,
+      "level": 1,
+      "logo": "upload/goods/category_logo/",
+      "data": ""
+    },
+    {
+      "cid": 18,
+      "c_name": " 女装",
+      "parent_id": 0,
+      "level": 1,
+      "logo": "upload/goods/category_logo/",
+      "data": ""
+    },
+    {
+      "cid": 19,
+      "c_name": " 男装",
+      "parent_id": 0,
+      "level": 1,
+      "logo": "upload/goods/category_logo/",
+      "data": ""
+    }
+  ]
+}

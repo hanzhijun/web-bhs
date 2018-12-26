@@ -1,0 +1,79 @@
+.out-side-classify {
+  background-color: #fff
+}
+
+.out-side-classify .classify-out {
+  width: 1.5rem;
+  height: calc(100vh - 1.84rem);
+  background-color: #fff;
+  border-right: .5px solid #eee;
+  overflow-y: auto;
+  margin-top: .88rem;
+}
+
+.out-side-classify .classify {
+  display: block;
+  height: .8rem;
+  text-align: center;
+}
+
+.out-side-classify .classify .classify-side {
+  display: block;
+  height: .58rem;
+  line-height: .58rem;
+  color: #333;
+  font-size: .26rem;
+  border-left: 3px solid #fff;
+  margin: .11rem 0;
+}
+
+.out-side-classify .classify.this-over .classify-side {
+  border-left: 3px solid #f62343;
+}
+
+.out-side-classify .classify.this-over .classify-side,
+.out-side-classify .classify .classify-side:active {
+  color: #e62343;
+}
+
+.out-side-classify .classify-main {
+  display: none;
+  width: calc(100vw - 1.5rem);
+  height: calc(100vh - 1.85rem);
+  overflow-y: auto;
+  position: absolute;
+  top: .88rem;
+  left: 1.5rem;
+  background-color: #fff;
+  padding: .26rem 0 0 .14rem;
+}
+
+.out-side-classify .classify-main.this-over {
+  display: block;
+}
+
+.out-side-classify .classify-main li {
+  width: 1.9rem;
+  height: 2.4rem;
+  float: left;
+  overflow: hidden;
+  text-align: center;
+}
+
+.out-side-classify .classify-main li .classify-img {
+  height: 1.5rem;
+}
+
+.out-side-classify .classify-main li .classify-img img {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.out-side-classify .classify-main li .classify-txt {
+  padding-top: .12rem;
+  font-size: .24rem;
+}
+
+.out-side-classify .classify-main li:active .classify-txt {
+  color: #f75d45
+}

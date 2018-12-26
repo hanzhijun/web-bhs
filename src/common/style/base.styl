@@ -1,0 +1,504 @@
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  font-style: normal;
+  text-decoration: none;
+  border: none;
+  color: #333;
+  font-size: 13px;
+  font-weight: normal;
+  font-family: -apple-system, Helvetica, sans-serif;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color:transparent;
+  -webkit-font-smoothing: antialiased;
+}
+ol, ul {
+  list-style: none outside none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+caption, th, td {
+  font-weight: normal;
+  vertical-align: middle;
+}
+q, blockquote {
+  quotes: none;
+}
+q:before,
+q:after,
+blockquote:before,
+blockquote:after {
+  content: "";
+  content: none;
+}
+a img {
+  border: none;
+}
+img {
+  vertical-align: top;
+  border: 0;
+}
+a {
+  color: #1a1a1a;
+  background: transparent;
+  text-decoration: none;
+}
+.link {
+  color: #07d;
+}
+.link:link, .link:hover, .link:visited, .link:active {
+  color: #07d;
+}
+button, input[type='number'], input[type='text'], input[type='password'], input[type='email'], select, textarea {
+  font-family: "Microsoft YaHei", "SimSun", Verdana, Arial, Helvetica, sans-serif;
+  font-size: 100%;
+  margin: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+div, h1, p, ul, li, label, textarea, span {
+  word-break: break-all;
+}
+div, h1, p, ul, li, label, textarea, input, button, form {
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+input, textarea {
+  border: 0 none;
+  outline:none;
+}
+input, select, textarea {
+  font-family: "Microsoft YaHei", "SimSun", Verdana, Arial, Helvetica, sans-serif;
+}
+input, select, button {
+  margin: 0;
+  border: none;
+  padding: 0;
+  outline: none;
+  vertical-align: middle;
+  background: transparent;
+}
+hr {
+  margin: 10px 0;
+  border: none;
+  border-top: .5px solid #ddd;
+}
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.center,
+.text-center {
+  text-align: center;
+}
+/*手指按下，降低透明度*/
+.opacity:active {
+  opacity: .8
+}
+/*文本一行，超出点点点*/
+.text-overflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap
+}
+/*文本两行，超出点点点*/
+.text-overflow-2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2
+}
+.fl {
+  float: left
+}
+.fr {
+  float: right
+}
+.box-sizing {
+  box-sizing: border-box
+}
+.checkbox {
+  display:flex;
+  align-items:center
+}
+/** font **/
+.fs-bold {
+  font-weight: bold
+}
+.fs-line {
+  text-decoration: line-through
+}
+.fs-under {
+  text-decoration: underline
+}
+.fs-20 {
+  font-size: .2rem
+}
+.fs-22 {
+  font-size: .22rem
+}
+.fs-24 {
+  font-size: .24rem
+}
+.fs-26 {
+  font-size: .26rem
+}
+.fs-28 {
+  font-size: .28rem
+}
+.fs-30 {
+  font-size: .3rem
+}
+.fs-32 {
+  font-size: .32rem
+}
+.fs-34 {
+  font-size: .34rem
+}
+.fs-36 {
+  font-size: .36rem
+}
+.fs-38 {
+  font-size: .38rem
+}
+.fs-40 {
+  font-size: .4rem
+}
+.fs-44 {
+  font-size: .44rem
+}
+.fs-48 {
+  font-size: .48rem
+}
+.fs-50 {
+  font-size: .5rem
+}
+.fs-60 {
+  font-size: .6rem
+}
+.fc-0d {
+  color: #0d0d0d
+}
+.fc-1a {
+  color: #1a1a1a
+}
+.fc-26 {
+  color: #262626
+}
+.fc-40 {
+  color: #404040
+}
+.fc-59 {
+  color: #595959
+}
+.fc-b2 {
+  color: #b2b2b2
+}
+.fc-b3 {
+  color: #b3b3b3
+}
+.fc-80 {
+  color: #808080
+}
+.fc-e6 {
+  color: #e62343 /*粉红色*/
+}
+.fc-fc {
+  color: #fc6c15 /*橙色*/
+}
+.fc-ff {
+  color: #fff
+}
+.fc-33 {
+  color: #333
+}
+.fc-66 {
+  color: #666
+}
+.fc-99 {
+  color: #999
+}
+.fc-00 {
+  color: #000
+}
+.red {
+    color: #e62343;
+}
+.border-line-heng-e6e6e6 {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: url('https://api.duishangbao.cn/upload/image/border-line-heng-e6e6e6.png') repeat-x 0 0/ 100px 1px;
+}
+.border-line-heng-d9d9d9 {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: url('https://api.duishangbao.cn/upload/image/border-line-heng-d9d9d9.png') repeat-x 0 0/ 100px 1px;
+}
+.border-line-heng-e62343 {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: url('https://api.duishangbao.cn/upload/image/border-line-heng-e62343.png') repeat-x 0 0/ 100px 1px;
+}
+.border-line-heng-cccccc {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: url('https://api.duishangbao.cn/upload/image/border-line-heng-d9d9d9.png') repeat-x 0 0/ 100px 1px;
+}
+.border-line-heng-xuxian {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: url('https://api.duishangbao.cn/upload/image/xu-xian-gray.png') repeat-x 0 0/ 500px 1px;
+}
+.border-line-shu-e6e6e6 {
+  display: block;
+  width: 1px;
+  height: 100%;
+  background: url('https://api.duishangbao.cn/upload/image/border-line-shu-e6e6e6.png') repeat-y 0 0/ 1px 100px;
+}
+.border-line-shu-d9d9d9 {
+  display: block;
+  width: 1px;
+  height: 100%;
+  background: url('https://api.duishangbao.cn/upload/image/border-line-shu-d9d9d9.png') repeat-y 0 0/ 1px 100px;
+}
+.border-line-shu-e62343 {
+  display: block;
+  width: 1px;
+  height: 100%;
+  background: url('https://api.duishangbao.cn/upload/image/border-line-shu-e62343.png') repeat-y 0 0/ 1px 100px;
+}
+.border-line-shu-cccccc {
+  display: block;
+  width: 1px;
+  height: 100%;
+  background: url('https://api.duishangbao.cn/upload/image/border-line-shu-cccccc.png') repeat-y 0 0/ 1px 100px;
+}
+/** loading **/
+.base-box {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 101
+}
+.base-box .gray-back {
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  opacity: .7;
+  position: absolute;
+  left: 0;
+  top: 0
+}
+.base-box .box-confirm {
+  width: 6rem;
+  overflow: hidden;
+  border-radius: .2rem;
+  position: absolute;
+  left: .75rem;
+  top: calc(50vh - 2rem);
+}
+.base-box .box-confirm .txt {
+  padding: .6rem .2rem;
+  font-size: .32rem;
+  line-height: .44rem;
+  text-align: center;
+  background-color: #fff;
+}
+.base-box .box-confirm .btn {
+  height: 1.3rem;
+  border-top: .5px solid #eee;
+}
+.base-box .box-confirm .btn a {
+   display: inline-block;
+  width: 3rem;
+  height: 1.3rem;
+  line-height: 1.3rem;
+  text-align: center;
+  font-size: .34rem;
+  float: left;
+  background-color: #fff;
+}
+.base-box .box-confirm .btn a.l:active {
+  background-color: #f5f5f5;
+}
+.base-box .box-confirm .btn a.r {
+  background-color: #e62343;
+  color: #fff;
+}
+.loading-box .gray-back {
+  background-color: #fff;
+  opacity: 0
+}
+.loading-box .box-content {
+  width: 120px;
+  height: 120px;
+  background: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  left: calc(50vw - 60px);
+  top: calc(50vh - 60px);
+  border-radius: 5px
+}
+.loading-box .box-content .img {
+  text-align: center;
+  padding: 30px 0 20px
+}
+.loading-box .box-content .img img {
+  width: 30px;
+  height: 30px
+}
+.loading-box .box-content .txt {
+  text-align: center;
+  font-size: 12px;
+  color: #f0f0f0
+}
+.show-toast {
+  width: 100%;
+  height: 20px;
+  text-align: center;
+  position: fixed;
+  left: 0;
+  bottom: 150px;
+  z-index: 1001;
+  overflow: visible
+}
+.show-toast span {
+  display: inline-block;
+  padding: 9px 15px;
+  background-color: #333;
+  color: #fff;
+  font-size: 14px;
+  margin: 0 auto;
+  border-radius: 5px;
+  max-width: 60vw
+}
+.login-box .box-content {
+  width: 200px;
+  height: 150px;
+  background-color: #fff;
+  position: absolute;
+  left: calc(50vw - 100px);
+  top: calc(50vh - 75px);
+  border-radius: 5px;
+  text-align: center
+}
+.login-box .box-content .ts-txt {
+  font-size: 16px;
+  padding: 20px 0 50px
+}
+.login-box .box-content .btn button {
+  width: 150px;
+  line-height: 35px;
+  background-color: #0099e9;
+  color: #fff;
+  font-size: 13px;
+  border-radius: 5px
+}
+.line-base {
+  display: block;
+  width: 100%;
+  height: 5px;
+  overflow: hidden;
+  border-top: .5px solid #e5e5e5;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background: none
+}
+.div-test {
+    color: red
+}
+/*header-bar 公共吸顶头：粉底，返回，搜索框，标题等*/
+.head-bar-fixed {
+    width: 100vw;
+    height: .88rem;
+    background-color: #e62343;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0
+}
+.head-bar-fixed .list-title {
+    line-height: 0.88rem;
+    text-align: center;
+}
+.head-bar-fixed .head-btn-return {
+    display: inline-block;
+    position: absolute;
+    width: .68rem;
+    height: .5rem;
+    background: url('https://api.duishangbao.cn/upload/image/icon_zu.png') no-repeat .1rem -3.95rem / .7rem 10rem;
+    left: .1rem;
+    top: .17rem;
+}
+.head-bar-fixed .share-btn {
+  display: inline-block;
+  height: .5rem;
+  line-height: .5rem;
+  padding-left: .6rem;
+  position: absolute;
+  background: url('https://api.duishangbao.cn/upload/image/icon_zu4.png') no-repeat 0 -2rem / .5rem 10rem;
+  top: .19rem;
+  right: .2rem;
+}
+.head-bar-fixed .share-btn-2 {
+  display: inline-block;
+  width: .5rem;
+  height: .5rem;
+  position: absolute;
+  background: url('https://api.duishangbao.cn/upload/image/icon_zu4.png') no-repeat 0 -2rem / .5rem 10rem;
+  top: .19rem;
+  right: .2rem;
+}
+  /*search-bar 页头 搜索框*/
+.search-main-bar {
+    width: 5.6rem;
+    height: 0.6rem;
+    border-radius: 0.60rem;
+    background-color: rgba(255, 255, 255, .3);
+    float: right;
+    margin: .14rem .2rem 0 0;
+}
+
+.search-main-bar .search-go {
+    display: inline-block;
+    width: .36rem;
+    height: .36rem;
+    float: left;
+    margin: .12rem .15rem 0 .25rem;
+    background: url('https://api.duishangbao.cn/upload/image/icon_zu.png') no-repeat 0 -5.5rem / .7rem 10rem;
+}
+
+.search-main-bar .search-word {
+    width: 4.2rem;
+    height: .5rem;
+    float: left;
+    margin-top: .04rem;
+    color: #fff;
+}
+
+.search-main-bar input.search-word::-webkit-input-placeholder {
+    color: #ffe0e8;
+}
+
+.search-main-bar .search-del {
+  display: inline-block;
+  width: .5rem;
+  height: .5rem;
+  background: url('https://api.duishangbao.cn/upload/image/icon_zu4.png') no-repeat .16rem -.89rem / .5rem 10rem;
+}
